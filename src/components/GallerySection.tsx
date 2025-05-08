@@ -40,6 +40,7 @@ const GallerySection: React.FC = () => {
                   src={image.src}
                   alt={image.alt}
                   className="w-full h-64 object-cover transition-transform hover:scale-105"
+                  loading="lazy"
                 />
               </motion.div>
             </AnimatedSection>
@@ -73,6 +74,7 @@ const GallerySection: React.FC = () => {
                   src={galleryImages.find(img => img.id === selectedImage)?.src}
                   alt={galleryImages.find(img => img.id === selectedImage)?.alt}
                   className="max-h-[80vh] w-auto mx-auto rounded-lg"
+                  loading="lazy"
                 />
               </motion.div>
             </motion.div>

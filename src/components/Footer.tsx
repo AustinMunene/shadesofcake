@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
     {
       icon: Instagram,
       name: 'Instagram',
-      link: 'https://instagram.com',
+      link: 'https://www.instagram.com/shades_of_cake_ke?igsh=ejRjN3ZleHFua3A1',
     },
     {
       icon: BrandTiktok,
@@ -34,14 +34,14 @@ const Footer: React.FC = () => {
     {
       icon: MessageCircle,
       name: 'WhatsApp',
-      link: 'https://wa.me/254712345678',
+      link: 'https://wa.me/message/2C7FUB3NHTYRA1',
     },
   ];
 
   return (
     <footer className="bg-navy-500 text-white">
       <div className="container mx-auto px-4 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {/* Logo & About */}
           <div>
             <div className="flex items-center mb-4">
@@ -53,7 +53,8 @@ const Footer: React.FC = () => {
             </p>
             <p className="text-gray-300 font-light">
               <strong className="font-normal">Location:</strong> Nairobi, Kenya<br />
-              <strong className="font-normal">Business Hours:</strong> Mon-Sat: 9AM - 6PM
+              <strong className="font-normal">Business Hours:</strong> Mon-Sat: 9AM - 5PM<br />
+              <strong className="font-normal">Phone:</strong> +254727376205
             </p>
           </div>
 
@@ -83,27 +84,6 @@ const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-lg font-light mb-4 text-primary-300">Stay Updated</h4>
-            <p className="text-gray-300 mb-4 font-light">
-              Subscribe to our newsletter for seasonal offers, discounts, and cake inspiration.
-            </p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="px-4 py-2 w-full text-navy-500 focus:outline-none focus:ring-1 focus:ring-primary-500 font-light"
-              />
-              <button
-                type="submit"
-                className="bg-primary-500 hover:bg-primary-600 px-4 py-2 transition-colors font-light"
-              >
-                Subscribe
-              </button>
-            </form>
           </div>
         </div>
 

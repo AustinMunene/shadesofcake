@@ -13,10 +13,9 @@ const Navigation: React.FC<NavigationProps> = ({ transparent = true }) => {
   
   const navLinks = [
     { name: 'Home', href: '#home' },
-    { name: 'Menu', href: '#menu' },
     { name: 'About', href: '#about' },
+    { name: 'Menu', href: '#menu' },
     { name: 'Gallery', href: '#gallery' },
-    { name: 'Contact', href: '#contact' },
   ];
   
   useEffect(() => {

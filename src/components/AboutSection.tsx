@@ -33,7 +33,8 @@ const AboutSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <SectionTitle
           title="About Us"
-          subtitle="Discover the passion and artistry behind Shades of Cake"
+          subtitle="Creating Confectionery Delights; 
+          We Specialize in Whipped Cream Celebration Cakes & Cupcakes For That Subtle Tooth"
         />
 
         <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -42,10 +43,10 @@ const AboutSection: React.FC = () => {
               <img
                 src="https://images.pexels.com/photos/6210746/pexels-photo-6210746.jpeg"
                 alt="Baker decorating a cake"
-                className="rounded-lg shadow-xl"
+                className="rounded-lg shadow-xl max-h-[500px] w-full object-cover"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
-                <p className="text-navy-500 font-semibold text-lg">Baking since 2015</p>
+                <p className="text-navy-500 font-semibold text-lg">Baking since 2017</p>
               </div>
             </div>
           </AnimatedSection>
@@ -55,7 +56,7 @@ const AboutSection: React.FC = () => {
               Our Cake Story
             </h3>
             <p className="text-gray-700 mb-6">
-              Founded in 2015, Shades of Cake began as a small home bakery with a big passion for creating delicious, beautiful cakes. What started as a hobby quickly grew into a beloved business as word spread about our amazing flavors and designs.
+              Founded in 2017, Shades of Cake began as a small home bakery with a big passion for creating delicious, beautiful cakes. What started as a hobby quickly grew into a beloved business as word spread about our amazing flavors and designs.
             </p>
             <p className="text-gray-700 mb-8">
               Today, we continue our commitment to quality, creativity, and customer satisfaction. Each cake is handcrafted with attention to detail and made with premium ingredients to ensure every bite is as delightful as the last.

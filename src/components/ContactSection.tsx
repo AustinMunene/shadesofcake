@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Instagram, Facebook, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Facebook, Clock, FacebookIcon } from 'lucide-react';
 import SectionTitle from './ui/SectionTitle';
 import Button from './ui/Button';
 
@@ -28,25 +28,25 @@ const ContactSection: React.FC = () => {
     {
       icon: Phone,
       title: 'Phone',
-      details: '+254 712 345 678',
-      link: 'tel:+254712345678',
+      details: '+254727376205',
+      link: 'tel:+254727376205',
     },
     {
       icon: Mail,
       title: 'Email',
-      details: 'info@shadesofcake.co.ke',
-      link: 'mailto:info@shadesofcake.co.ke',
+      details: 'emarubu@gmail.com',
+      link: 'mailto:emarubu@gmail.com',
     },
     {
       icon: MapPin,
       title: 'Location',
-      details: 'Nairobi, Kenya',
-      link: 'https://maps.google.com',
+      details: 'Sungura Road South C, Nairobi Area, Kenya',
+      link: 'https://maps.app.goo.gl/DoXv3gnWiindTcKA7?g_st=com.google.maps.preview.copy',
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      details: 'Mon-Sat: 9AM - 6PM',
+      details: 'Mon-Sat: 9AM - 5PM',
       link: '#',
     },
   ];
@@ -55,12 +55,7 @@ const ContactSection: React.FC = () => {
     {
       icon: Instagram,
       name: 'Instagram',
-      link: 'https://instagram.com',
-    },
-    {
-      icon: Facebook,
-      name: 'Facebook',
-      link: 'https://facebook.com',
+      link: 'https://www.instagram.com/shades_of_cake_ke?igsh=ejRjN3ZleHFua3A1',
     },
   ];
 
@@ -231,8 +226,8 @@ const ContactSection: React.FC = () => {
             <div className="bg-blush-100 p-6 rounded-lg shadow-md">
               <h4 className="text-lg font-semibold text-navy-500 mb-4">Order Information</h4>
               <ul className="space-y-2 text-gray-700">
-                <li>• Please place your orders at least 3 days in advance</li>
-                <li>• Custom design orders require 5-7 days notice</li>
+                <li>• Please place your orders at least 2 days in advance</li>
+                <li>• Custom design orders require 3-5 days notice</li>
                 <li>• Delivery available within Nairobi (additional fee applies)</li>
                 <li>• Payment: 50% deposit required to confirm your order</li>
                 <li>• We also offer cake tasting sessions by appointment</li>
