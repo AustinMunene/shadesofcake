@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Instagram, Facebook, Clock, FacebookIcon } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Clock } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 import SectionTitle from './ui/SectionTitle';
 import Button from './ui/Button';
 
@@ -15,13 +16,51 @@ type FormData = {
 };
 
 const ContactSection: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-    // Here you would typically send the data to your backend
-    alert('Thank you for your message! We will get back to you soon.');
-    reset();
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      // First, sign up the user
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: data.email,
+        password: Math.random().toString(36).slice(-8), // Generate a random password
+      });
+
+      if (authError) throw authError;
+
+      // Create profile
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .upsert({
+          id: authData.user?.id,
+          email: data.email,
+          full_name: data.name,
+        });
+
+      if (profileError) throw profileError;
+
+      // Create order
+      const { error: orderError } = await supabase
+        .from('orders')
+        .insert({
+          user_id: authData.user?.id,
+          cake_type: data.cakeType,
+          occasion: data.occasion,
+          message: data.message,
+        });
+
+      if (orderError) throw orderError;
+
+      alert('Thank you for your order! We will contact you soon.');
+      reset();
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an error submitting your order. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -143,7 +182,7 @@ const ContactSection: React.FC = () => {
                   <select
                     id="cakeType"
                     className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${errors.cakeType ? 'border-red-500' : 'border-gray-300'}`}
-                    {...register('cakeType')}
+                    {...register('cakeType', { required: 'Please select a cake type' })}
                   >
                     <option value="">Select a cake type</option>
                     <option value="sponge">Sponge Cake</option>
@@ -152,6 +191,9 @@ const ContactSection: React.FC = () => {
                     <option value="cupcakes">Cupcakes</option>
                     <option value="custom">Custom Order</option>
                   </select>
+                  {errors.cakeType && (
+                    <span className="text-sm text-red-500">{errors.cakeType.message}</span>
+                  )}
                 </div>
 
                 <div>
@@ -190,8 +232,13 @@ const ContactSection: React.FC = () => {
                 )}
               </div>
 
-              <Button type="submit" variant="primary" className="w-full mt-4">
-                Send Message
+              <Button 
+                type="submit" 
+                variant="primary" 
+                className="w-full mt-4"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </motion.div>
