@@ -33,7 +33,7 @@ const MenuSection: React.FC = () => {
   };
 
   return (
-    <section id="menu" className="py-20 overflow-hidden bg-white">
+    <section id="menu" className="py-20 overflow-hidden bg-blush-50">
       <div className="container mx-auto px-4">
         <SectionTitle
           title="Our Menu"
@@ -60,7 +60,7 @@ const MenuSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="relative bg-white rounded-lg shadow-lg p-4 md:p-8">
+        <div className="relative bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-4 md:p-8">
           <p className="text-gray-600 mb-8 text-center font-light text-sm md:text-base">
             All our cakes come with standard whipped cream frosting and basic decorations.
             Custom designs and special requests available at additional cost.
