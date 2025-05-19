@@ -56,10 +56,12 @@ const AboutSection: React.FC = () => {
               Our Cake Story
             </h3>
             <p className="text-gray-700 mb-6">
-              Founded in 2017, Shades of Cake began as a small home bakery with a big passion for creating delicious, beautiful cakes. What started as a hobby quickly grew into a beloved business as word spread about our amazing flavors and designs.
+            Shades of Cake began in the warmth of my mother's kitchen, where the scent of fresh mandazis and traditional jiko-baked cakes filled the air. 
+             My Mum gently encouraged me to be baking seriously - even when I wasn't sure what it meant for me. Turns out, it was exactly what I needed.
+             What started as a few homemade treats has grown into a passion driven bakery rooted in love, tradition, and creativity.
             </p>
             <p className="text-gray-700 mb-8">
-              Today, we continue our commitment to quality, creativity, and customer satisfaction. Each cake is handcrafted with attention to detail and made with premium ingredients to ensure every bite is as delightful as the last.
+            At Shades of Cake, every bite tells a story - of family, heritage, and the joy of sharing something sweet.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
