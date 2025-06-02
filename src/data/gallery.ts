@@ -60,7 +60,7 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 9,
     src: 'https://images.pexels.com/photos/1702373/pexels-photo-1702373.jpeg',
-    alt: 'Blueberry cheesecake',
+    alt: 'Cake For Your Wedding',
     width: 800,
     height: 600
   },
