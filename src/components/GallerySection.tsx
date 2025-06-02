@@ -16,6 +16,28 @@ const GallerySection: React.FC = () => {
     setSelectedImage(null);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <section id="gallery" className="py-20 bg-blush-50">
       <div className="container mx-auto px-4">
@@ -24,28 +46,40 @@ const GallerySection: React.FC = () => {
           subtitle="A showcase of our delicious creations"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {galleryImages.map((image, index) => (
-            <AnimatedSection 
-              key={image.id} 
-              className="cursor-pointer overflow-hidden rounded-lg shadow-md"
-              delay={index * 0.1}
+            <motion.div
+              key={image.id}
+              variants={itemVariants}
+              className="group relative aspect-square overflow-hidden rounded-xl shadow-lg"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => handleImageClick(image.id)}
+                className="w-full h-full cursor-pointer"
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-64 object-cover transition-transform hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-90"
                   loading="lazy"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm font-medium">{image.alt}</p>
+                  </div>
+                </div>
               </motion.div>
-            </AnimatedSection>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Image Modal */}
         <AnimatePresence>
@@ -54,28 +88,32 @@ const GallerySection: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
               onClick={closeModal}
             >
               <motion.div
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.8 }}
-                className="relative max-w-4xl mx-auto"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="relative max-w-4xl w-full mx-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
-                  className="absolute top-4 right-4 bg-white rounded-full p-2"
+                  className="absolute -top-12 right-0 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors duration-200"
                   onClick={closeModal}
                 >
-                  <X size={24} className="text-navy-500" />
+                  <X size={24} className="text-white" />
                 </button>
                 <img
                   src={galleryImages.find(img => img.id === selectedImage)?.src}
                   alt={galleryImages.find(img => img.id === selectedImage)?.alt}
-                  className="max-h-[80vh] w-auto mx-auto rounded-lg"
+                  className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                   loading="lazy"
                 />
+                <p className="absolute bottom-4 left-4 text-white text-sm font-medium">
+                  {galleryImages.find(img => img.id === selectedImage)?.alt}
+                </p>
               </motion.div>
             </motion.div>
           )}

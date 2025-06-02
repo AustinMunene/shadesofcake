@@ -41,7 +41,7 @@ const AboutSection: React.FC = () => {
           <AnimatedSection className="lg:w-1/2">
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/6210746/pexels-photo-6210746.jpeg"
+                src="https://i.imgur.com/ep1k5et.jpeg?1"
                 alt="Baker decorating a cake"
                 className="rounded-lg shadow-xl max-h-[500px] w-full object-cover"
               />
