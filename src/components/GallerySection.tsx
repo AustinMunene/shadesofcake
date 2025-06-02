@@ -7,6 +7,7 @@ import { galleryImages } from '../data/gallery';
 
 const GallerySection: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   const handleImageClick = (id: number) => {
     setSelectedImage(id);
@@ -14,6 +15,10 @@ const GallerySection: React.FC = () => {
 
   const closeModal = () => {
     setSelectedImage(null);
+  };
+
+  const handleImageLoad = (id: number) => {
+    setLoadedImages(prev => new Set([...prev, id]));
   };
 
   const containerVariants = {
@@ -30,6 +35,18 @@ const GallerySection: React.FC = () => {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: { 
+      scale: 1, 
       opacity: 1,
       transition: {
         duration: 0.5,
@@ -65,17 +82,28 @@ const GallerySection: React.FC = () => {
                 onClick={() => handleImageClick(image.id)}
                 className="w-full h-full cursor-pointer"
               >
-                <img
+                {!loadedImages.has(image.id) && (
+                  <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                )}
+                <motion.img
                   src={image.src}
                   alt={image.alt}
                   className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-90"
                   loading="lazy"
+                  onLoad={() => handleImageLoad(image.id)}
+                  variants={imageVariants}
+                  initial="hidden"
+                  animate={loadedImages.has(image.id) ? "visible" : "hidden"}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                >
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-sm font-medium">{image.alt}</p>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             </motion.div>
           ))}
@@ -99,21 +127,31 @@ const GallerySection: React.FC = () => {
                 className="relative max-w-4xl w-full mx-auto"
                 onClick={(e) => e.stopPropagation()}
               >
-                <button
+                <motion.button
                   className="absolute -top-12 right-0 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors duration-200"
                   onClick={closeModal}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   <X size={24} className="text-white" />
-                </button>
-                <img
+                </motion.button>
+                <motion.img
                   src={galleryImages.find(img => img.id === selectedImage)?.src}
                   alt={galleryImages.find(img => img.id === selectedImage)?.alt}
                   className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
                   loading="lazy"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                 />
-                <p className="absolute bottom-4 left-4 text-white text-sm font-medium">
+                <motion.p 
+                  className="absolute bottom-4 left-4 text-white text-sm font-medium"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
                   {galleryImages.find(img => img.id === selectedImage)?.alt}
-                </p>
+                </motion.p>
               </motion.div>
             </motion.div>
           )}
