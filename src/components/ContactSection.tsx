@@ -79,7 +79,7 @@ const ContactSection: React.FC = () => {
     {
       icon: MapPin,
       title: 'Location',
-      details: 'Sungura Road South C, Nairobi Area, Kenya',
+      details: 'Sungura Road South C, Nairobi, Kenya',
       link: 'https://maps.app.goo.gl/DoXv3gnWiindTcKA7?g_st=com.google.maps.preview.copy',
     },
     {
@@ -126,7 +126,7 @@ const ContactSection: React.FC = () => {
                   id="name"
                   type="text"
                   className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
-                  placeholder="John Doe"
+                  placeholder="Your Name"
                   {...register('name', { required: 'Name is required' })}
                 />
                 {errors.name && (
@@ -143,7 +143,7 @@ const ContactSection: React.FC = () => {
                     id="email"
                     type="email"
                     className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-                    placeholder="your@email.com"
+                    placeholder="Your Email"
                     {...register('email', {
                       required: 'Email is required',
                       pattern: {
@@ -165,7 +165,7 @@ const ContactSection: React.FC = () => {
                     id="phone"
                     type="tel"
                     className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
-                    placeholder="+254 7XX XXX XXX"
+                    placeholder="Your Phone Number"
                     {...register('phone', { required: 'Phone number is required' })}
                   />
                   {errors.phone && (
