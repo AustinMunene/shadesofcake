@@ -73,8 +73,8 @@ const ContactSection: React.FC = () => {
     {
       icon: Mail,
       title: 'Email',
-      details: 'emarubu@gmail.com',
-      link: 'mailto:emarubu@gmail.com',
+      details: 'shadesofcake.ke@gmail.com',
+      link: 'mailto:shadesofcake.ke@gmail.com',
     },
     {
       icon: MapPin,
