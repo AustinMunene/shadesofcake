@@ -66,7 +66,7 @@ const GallerySection: React.FC = () => {
         {/* Gallery Images */}
         {/* Mobile: Horizontal swipeable carousel */}
         <motion.div
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:hidden pb-2"
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:hidden pb-2 -mx-4 px-4"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           style={{ WebkitOverflowScrolling: 'touch' }}

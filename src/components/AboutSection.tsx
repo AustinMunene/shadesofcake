@@ -98,7 +98,7 @@ const AboutSection: React.FC = () => {
                 transition={{ duration: 0.5 }}
               />
               <motion.div 
-                className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg hidden md:block"
+                className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-lg"
                 initial={{ opacity: 0, y: 20, scale: 0.9 }}
                 animate={imageLoaded ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
                 transition={{ delay: 0.3 }}
