@@ -104,7 +104,7 @@ const AboutSection: React.FC = () => {
                 transition={{ delay: 0.3 }}
               >
                 <motion.p 
-                  className="text-navy-500 font-semibold text-lg"
+                  className="text-navy-500 font-semibold text-base md:text-lg"
                   initial={{ opacity: 0 }}
                   animate={imageLoaded ? { opacity: 1 } : { opacity: 0 }}
                   transition={{ delay: 0.4 }}
