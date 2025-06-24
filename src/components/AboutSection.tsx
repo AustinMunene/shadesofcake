@@ -10,23 +10,23 @@ const AboutSection: React.FC = () => {
   const features = [
     {
       icon: CakeIcon,
-      title: 'Premium Ingredients',
-      description: 'We use only the finest ingredients to create our cakes, ensuring the best taste and quality.',
+      title: 'Quality You Can Taste',
+      description: 'We choose fresh, high quality ingredients because every bite should be as special as the moment it celebrates.',
     },
     {
       icon: Award,
-      title: 'Expert Craftsmanship',
-      description: 'Our experienced bakers bring creativity and precision to every cake we make.',
+      title: 'Thoutfully Baked, Just For You',
+      description: 'Each cake is a personal creation, crafted with care and creativity by our small, passionate team.',
     },
     {
       icon: Clock,
-      title: 'Timely Delivery',
-      description: 'We ensure your order is delivered fresh and on time for your special occasion.',
+      title: 'On-Time, Every Time',
+      description: 'We know how important timing is. That is why we make sure your cake arrives fresh and ready when you need it.',
     },
     {
       icon: Heart,
-      title: 'Made with Love',
-      description: 'Every cake is made with passion and attention to detail, just for you.',
+      title: 'Baked with Heart',
+      description: 'From the first mix to the final touch, we pour love and attention into every cake we make.',
     },
   ];
 
@@ -76,8 +76,9 @@ const AboutSection: React.FC = () => {
         >
           <SectionTitle
             title="About Us"
-            subtitle="Creating Confectionery Delights; 
-            We Specialize in Whipped Cream Celebration Cakes & Cupcakes For That Subtle Tooth"
+            subtitle=" Shades of Cake began in the warmth of my mother’s kitchen, where the scent of fresh mandazis and traditional jiko-baked cakes filled the air. My mum gently encouraged me to take baking seriously—even when I wasn’t sure it was meant for me. Turns out, it was exactly what I needed.
+
+What started as a few homemade treats has grown into a passion-driven bakery rooted in love, tradition, and creativity. At Shades of Cake, every bite tells a story—of family, heritage, and the joy of sharing something sweet."
           />
         </motion.div>
 
