@@ -40,7 +40,7 @@ const MenuSection: React.FC = () => {
           subtitle="Explore our delicious selection of cakes and cupcakes"
         />
 
-        <div className="mb-8 flex justify-start md:justify-center space-x-4 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+        <div className="mb-8 flex justify-start md:justify-center space-x-4 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-thin scrollbar-thumb-primary-200">
           {categories.map((category, index) => (
             <button
               key={category.id}
@@ -60,13 +60,13 @@ const MenuSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="relative bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-4 md:p-8">
+        <div className="relative bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-4 sm:p-6 md:p-8">
           <p className="text-gray-600 mb-8 text-center font-light text-sm md:text-base">
             All our cakes come with standard whipped cream frosting and basic decorations.
             Custom designs and special requests available at additional cost.
           </p>
 
-          <div className="relative h-[500px] md:h-[600px] overflow-hidden">
+          <div className="relative h-[420px] sm:h-[500px] md:h-[600px] overflow-hidden">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}

@@ -63,8 +63,51 @@ const GallerySection: React.FC = () => {
           subtitle="A showcase of our delicious creations"
         />
 
+        {/* Gallery Images */}
+        {/* Mobile: Horizontal swipeable carousel */}
+        <motion.div
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:hidden pb-2"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
+          {galleryImages.map((image, index) => (
+            <motion.div
+              key={image.id}
+              className="min-w-[80vw] max-w-xs snap-center group relative aspect-square overflow-hidden rounded-xl shadow-lg w-full flex-shrink-0"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => handleImageClick(image.id)}
+            >
+              {!loadedImages.has(image.id) && (
+                <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+              )}
+              <motion.img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-90"
+                loading="lazy"
+                onLoad={() => handleImageLoad(image.id)}
+                variants={imageVariants}
+                initial="hidden"
+                animate={loadedImages.has(image.id) ? "visible" : "hidden"}
+              />
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+              >
+                <div className="absolute bottom-4 left-4 text-white">
+                  <p className="text-sm font-medium">{image.alt}</p>
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Tablet/Desktop: Grid layout */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -74,7 +117,7 @@ const GallerySection: React.FC = () => {
             <motion.div
               key={image.id}
               variants={itemVariants}
-              className="group relative aspect-square overflow-hidden rounded-xl shadow-lg"
+              className="group relative aspect-square overflow-hidden rounded-xl shadow-lg w-full"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}

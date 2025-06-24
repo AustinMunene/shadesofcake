@@ -54,7 +54,7 @@ const HeroSection: React.FC = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
       />
       
-      <div className="container mx-auto px-4 z-10 py-24 md:py-0">
+      <div className="container mx-auto px-4 z-10 py-16 sm:py-24 md:py-0">
         <motion.div 
           className="text-center"
           variants={containerVariants}
@@ -62,7 +62,7 @@ const HeroSection: React.FC = () => {
           animate="visible"
         >
           <motion.h1 
-            className="text-4xl md:text-6xl font-script text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-script text-white mb-4 sm:mb-6"
             variants={itemVariants}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -71,7 +71,7 @@ const HeroSection: React.FC = () => {
             Shades of Cake
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto"
+            className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 max-w-xl sm:max-w-2xl mx-auto"
             variants={itemVariants}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -82,7 +82,7 @@ const HeroSection: React.FC = () => {
           </motion.p>
 
           <motion.div 
-            className="flex flex-col sm:flex-row justify-center gap-4"
+            className="flex flex-col gap-4 sm:flex-row sm:justify-center"
             variants={itemVariants}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -91,6 +91,7 @@ const HeroSection: React.FC = () => {
             <Button 
               variant="primary"
               size="lg"
+              className="w-full sm:w-auto"
               onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
             >
               View Our Menu
@@ -98,7 +99,7 @@ const HeroSection: React.FC = () => {
             <Button 
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white hover:bg-opacity-20"
+              className="w-full sm:w-auto border-white text-white hover:bg-white hover:bg-opacity-20"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Contact Us

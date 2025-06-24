@@ -13,7 +13,7 @@ const TestimonialsSection: React.FC = () => {
           subtitle="Don't just take our word for it - hear from our satisfied customers"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}

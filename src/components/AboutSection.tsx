@@ -81,16 +81,16 @@ const AboutSection: React.FC = () => {
           />
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          <AnimatedSection className="lg:w-1/2">
-            <div className="relative">
+        <div className="flex flex-col gap-8 lg:flex-row lg:gap-12 items-center">
+          <AnimatedSection className="w-full lg:w-1/2">
+            <div className="relative w-full">
               {!imageLoaded && (
                 <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg" />
               )}
               <motion.img
                 src="https://i.imgur.com/ep1k5et.jpeg?1"
                 alt="Baker decorating a cake"
-                className="rounded-lg shadow-xl max-h-[500px] w-full object-cover"
+                className="rounded-lg shadow-xl max-h-[400px] sm:max-h-[500px] w-full object-cover"
                 loading="lazy"
                 onLoad={() => setImageLoaded(true)}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -116,18 +116,18 @@ const AboutSection: React.FC = () => {
           </AnimatedSection>
 
           <motion.div 
-            className="lg:w-1/2"
+            className="w-full lg:w-1/2"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {features.map((feature, index) => (
                 <motion.div
                   key={feature.title}
                   variants={featureVariants}
-                  className="bg-white p-6 rounded-lg shadow-md"
+                  className="bg-white p-5 sm:p-6 rounded-lg shadow-md"
                   whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
                 >
                   <motion.div
@@ -138,13 +138,13 @@ const AboutSection: React.FC = () => {
                     <feature.icon className="w-8 h-8 text-primary-500 mb-4" />
                   </motion.div>
                   <motion.h3 
-                    className="text-lg font-semibold text-navy-500 mb-2"
+                    className="text-base sm:text-lg font-semibold text-navy-500 mb-2"
                     variants={textVariants}
                   >
                     {feature.title}
                   </motion.h3>
                   <motion.p 
-                    className="text-gray-600"
+                    className="text-gray-600 text-sm sm:text-base"
                     variants={textVariants}
                   >
                     {feature.description}

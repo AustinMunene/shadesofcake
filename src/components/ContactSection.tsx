@@ -55,9 +55,9 @@ const ContactSection: React.FC = () => {
 
       alert('Thank you for your order! We will contact you soon.');
       reset();
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error:', error);
-      alert('There was an error submitting your order. Please try again.');
+      alert(`There was an error submitting your order: ${error.message || error}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -106,7 +106,7 @@ const ContactSection: React.FC = () => {
           subtitle="Have questions or want to place an order? Reach out to us!"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -235,7 +235,7 @@ const ContactSection: React.FC = () => {
               <Button 
                 type="submit" 
                 variant="primary" 
-                className="w-full mt-4"
+                className="w-full mt-4 py-3 text-lg"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
