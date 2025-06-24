@@ -82,7 +82,13 @@ const AboutSection: React.FC = () => {
         </motion.div>
 
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-12 items-center">
-          <AnimatedSection className="w-full lg:w-1/2">
+          {/* Mobile: Simple unique content */}
+          <div className="w-full md:hidden flex flex-col items-center mb-6">
+            <CakeIcon className="w-12 h-12 text-primary-500 mb-2" />
+            <span className="text-navy-500 font-semibold text-lg">Celebrating Every Moment</span>
+          </div>
+          {/* Desktop: Image and caption */}
+          <AnimatedSection className="w-full lg:w-1/2 hidden md:block">
             <div className="relative w-full">
               {!imageLoaded && (
                 <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg" />

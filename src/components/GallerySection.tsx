@@ -66,7 +66,7 @@ const GallerySection: React.FC = () => {
         {/* Gallery Images */}
         {/* Mobile: Horizontal swipeable carousel */}
         <motion.div
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:hidden pb-2 -mx-4 px-4"
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory sm:hidden pb-2 -mx-4 px-4 scrollbar-thin scrollbar-thumb-primary-500 scrollbar-track-blush-100"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {galleryImages.map((image, index) => (
@@ -102,6 +102,11 @@ const GallerySection: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
+        {/* Show a custom scrollbar below the carousel for mobile */}
+        <div className="sm:hidden h-2 w-full -mx-4 px-4 overflow-x-auto scrollbar-thin scrollbar-thumb-primary-500 scrollbar-track-blush-100" style={{ WebkitOverflowScrolling: 'touch' }}>
+          {/* This div is just to show the scrollbar visually, can be empty or have a dummy content for scrollbar rendering */}
+          <div style={{ width: `${galleryImages.length * 80}vw`, height: 1 }} />
+        </div>
 
         {/* Tablet/Desktop: Grid layout */}
         <motion.div 
