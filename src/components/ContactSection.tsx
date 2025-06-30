@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Instagram, Clock } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import emailjs from 'emailjs-com';
 import SectionTitle from './ui/SectionTitle';
 import Button from './ui/Button';
 
@@ -22,42 +22,46 @@ const ContactSection: React.FC = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      // First, sign up the user
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: data.email,
-        password: Math.random().toString(36).slice(-8), // Generate a random password
-      });
+      // Initialize EmailJS 
+      // Replace 'YOUR_EMAILJS_USER_ID' with your actual EmailJS User ID from your dashboard
+      emailjs.init('YOUR_EMAILJS_USER_ID');
 
-      if (authError) throw authError;
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        from_phone: data.phone,
+        cake_type: data.cakeType,
+        occasion: data.occasion,
+        message: data.message,
+        to_email: 'shadesofcake.ke@gmail.com', // Your business email
+      };
 
-      // Create profile
-      const { error: profileError } = await supabase
-        .from('profiles')
-        .upsert({
-          id: authData.user?.id,
-          email: data.email,
-          full_name: data.name,
-        });
+      // Send email using EmailJS
+      // Replace 'YOUR_SERVICE_ID' with your EmailJS Service ID
+      // Replace 'YOUR_TEMPLATE_ID' with your EmailJS Template ID
+      const result = await emailjs.send(
+        'YOUR_SERVICE_ID', // Get this from EmailJS dashboard → Email Services
+        'YOUR_TEMPLATE_ID', // Get this from EmailJS dashboard → Email Templates
+        templateParams
+      );
 
-      if (profileError) throw profileError;
-
-      // Create order
-      const { error: orderError } = await supabase
-        .from('orders')
-        .insert({
-          user_id: authData.user?.id,
-          cake_type: data.cakeType,
-          occasion: data.occasion,
-          message: data.message,
-        });
-
-      if (orderError) throw orderError;
-
-      alert('Thank you for your order! We will contact you soon.');
-      reset();
+      if (result.status === 200) {
+        alert('Thank you for your order! We will contact you soon.');
+        reset();
+      } else {
+        throw new Error('Failed to send email');
+      }
     } catch (error: any) {
       console.error('Error:', error);
-      alert(`There was an error submitting your order: ${error.message || error}`);
+      
+      // Provide more specific error messages
+      if (error.message?.includes('fetch')) {
+        alert('Network error: Unable to send your message. Please check your internet connection and try again.');
+      } else if (error.message?.includes('EmailJS')) {
+        alert('Email service error: Please try again later or contact us directly.');
+      } else {
+        alert(`There was an error submitting your order: ${error.message || 'Unknown error occurred'}`);
+      }
     } finally {
       setIsSubmitting(false);
     }
